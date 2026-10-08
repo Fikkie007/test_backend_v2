@@ -1,0 +1,240 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Product API",
+        "description": "Authentication and product management API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/products": {
+            "get": {
+                "summary": "List products",
+                "operationId": "074a46414c7e2f0d085a6de4d14fc2cc",
+                "responses": {
+                    "200": {
+                        "description": "Product list"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create product",
+                "operationId": "ebd55e65ea3ec6897ab68bb479b1a456",
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            }
+        },
+        "/api/products/{product}": {
+            "get": {
+                "summary": "Get a product",
+                "operationId": "a8c289a1ffc1b0f53da1cb4bd6143d8e",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product detail"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update product",
+                "operationId": "227113c57f707199d05e201f3c36e08c",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete product",
+                "operationId": "05e532446921dda338929c6aaac3ecde",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "summary": "Register",
+                "operationId": "dfdb02f535ed05ca65c4ce39fd18e0ab",
+                "responses": {
+                    "201": {
+                        "description": "Registered"
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "summary": "Login",
+                "operationId": "f9a93b98609137d42bd40442823acc98",
+                "responses": {
+                    "200": {
+                        "description": "Authenticated"
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "summary": "Refresh token",
+                "operationId": "ff5aeb2712e757db50b8bd9c3cfc94b6",
+                "responses": {
+                    "200": {
+                        "description": "Token refreshed"
+                    },
+                    "401": {
+                        "description": "Invalid refresh token"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "summary": "Logout",
+                "operationId": "838bae51e2f7b279153658732ae4c756",
+                "responses": {
+                    "200": {
+                        "description": "Logged out"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "servers": [
+                    {
+                        "url": "/",
+                        "description": "Current server"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "token",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

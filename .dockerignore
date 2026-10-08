@@ -1,0 +1,8 @@
+.env
+.git
+vendor
+node_modules
+storage/logs/*
+tests
+docs
+*.pdf
